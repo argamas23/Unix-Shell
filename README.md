@@ -1,6 +1,6 @@
-<<<<<<< Updated upstream
+
 # mini-project-1-template
-=======
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Qiz9msrr)
 # Linux Shell Replica (Mini-Project-1)
 
@@ -74,6 +74,56 @@ The `proclore` command helps us to obtain information of a process such as :-
 - Executable path process
 [ChatGpt Prompt Link](https://chatgpt.com/share/9f8cd3b0-3c0b-4f74-a5fe-3135f21f6454)
 
+### Output and Input Redirection
+
+The shell allows you to redirect the output of commands to files and read input data from files. Error handling is in place, including checks for non-existent input files. Examples include:
+
+- Output redirection: `diff file1.txt file2.txt > output.txt`
+- Input redirection: `sort < lines.txt`
+- Input-Output redirection: `sort < lines.txt > sorted-lines.txt`
+
+### Pipelines
+
+The shell facilitates the creation of pipelines by utilizing the | symbol, allowing for the sequential execution of multiple commands. It supports an unrestricted number of pipes, as demonstrated in the following examples:
+
+- Utilizing two commands: `more file.txt | wc`
+- Employing three commands: `grep "new" temp.txt | cat somefile.txt | wc`
+
+### iMan
+
+Introducing the iMan command, a valuable enhancement to this shell that empowers users to effortlessly access manual pages encompassing a wide array of commands and utilities. This feature offers comprehensive insights into command utilization, available options, and practical examples, facilitating a seamless and efficient shell navigation experience.
+[ChatGpt Prompt Link](https://chatgpt.com/c/66e13ae2-e7a4-8006-93ba-5511d246c416)
+
+### neonate
+
+The "neonate" command represents a robust functionality that streamlines repetitive actions, enabling users to devise and run personalized scripts within the shell environment. This feature elevates the shell's scripting potential, granting users the ability to automate intricate processes effortlessly.
+[Claude Ai Prompt Link](https://claude.ai/chat/86507a83-87a7-470e-9db7-a32716feba6e)
+
+
+### myshrc
+
+The "myshrc" feature tends to beteer the shell experience by providing us the opportunity create aliases for different commands in a bash file and then run those commands through those aliases. 
+For example, `home = hop ~` Here `home` command can be used to return to the home directory.
+[Claude Ai Prompt Link](https://claude.ai/chat/810a59af-0c0c-415b-86b0-e204655e89aa)
+
+### activities
+
+Activities command helps to get a detail about all the process being run or runned in the past at the present session.
+[ChatGpt Prompt Link](https://chatgpt.com/c/66daab8b-4618-8006-b238-9f7af0ebab8c)
+
+### Additional Commands
+
+Here are some essential keyboard shortcuts for controlling processes in a shell environment:
+
+- "CTRL-Z": This shortcut allows you to transition the current job's status to "stopped" and moves it to the background.
+
+- "CTRL+D": Use this key combination to exit the shell gracefully.
+
+- "CTRL+C": This key combination emulates the functionality of the bash shell and can be employed to terminate a running process.
+
+
+
+
 # Assumptions
 
 1. Change in directories in format `hop .. X` will first revert back to the parent directory and then the target directory. For direct changes use `hop ../X` format.
@@ -83,4 +133,8 @@ The `proclore` command helps us to obtain information of a process such as :-
 5. For exiting the custom C Shell hit `CTRL + D`.
 6. Error messages are displayed but are not highlighted.
 7. For applying any kind of `reveal` command in the current file, it is suggested to use in the format `reveal -la .`.
->>>>>>> Stashed changes
+8. Activities command handles five states of a process i.e. `Running, Sleeping, Stopped, Zombie, Unknown`.
+9. myshrc has been done only for the aliases part.
+10. Any process relating to piping or input redirection would not print the time taken by the process.
+11. If there is an invalid command for iMan. It just prints that there is no match. 
+

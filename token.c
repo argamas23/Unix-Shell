@@ -1,15 +1,8 @@
 #include "headers.h"
 #include"myshrc.h"
 
-void restore(int a_r, int o_r, int original_output)
-{
-    if (a_r || o_r)
-    {
-        if (dup2(original_output, STDOUT_FILENO) != -1)
-            return; 
-        fprintf(stderr, RED"ERROR: Unable to restore output back to terminal\n"RESET);
-    }
-}
+void restore(int a_r, int o_r, int original_output);
+
 
 char * tokenize(char* username, char* hostname, char* home_dir, char* command, char* prev_dir,logque* log)
 {
@@ -145,7 +138,7 @@ char * tokenize(char* username, char* hostname, char* home_dir, char* command, c
                 char *inp_tok;
                 char **inp_redir_list = (char **)malloc(sizeof(char *) * 50);  
                 int inp_redir_Count = 0;
-
+                int inp_redir_flag=0;
                 inp_tok = strtok(buffer, delimit);
                 while (inp_tok != NULL)
                 {
@@ -162,7 +155,7 @@ char * tokenize(char* username, char* hostname, char* home_dir, char* command, c
                 {
                     command_list[j - 2 + inp_redir_Count] = command_list[j];
                 }
-
+                inp_redir_flag=1;
                 // Insert the new tokens in place of `<` and the file name
                 for (int j = 0; j < inp_redir_Count; j++)
                 {
@@ -323,4 +316,14 @@ char * tokenize(char* username, char* hostname, char* home_dir, char* command, c
     }
     return end;
     
+}
+
+void restore(int a_r, int o_r, int original_output)
+{
+    if (a_r || o_r)
+    {
+        if (dup2(original_output, STDOUT_FILENO) != -1)
+            return; 
+        fprintf(stderr, RED"ERROR: Unable to restore output back to terminal\n"RESET);
+    }
 }

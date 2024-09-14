@@ -158,7 +158,7 @@ void search_directory(char *path, char *target, char *targetword, int only_dirs,
             continue;
         }
 
-        int rm_dot = check(entry[i]->d_name, targetword);
+        int rm_dot = check(entry[i]->d_name, strlen(entry[i]->d_name),targetword);
         // printf("here %s %s\n",entry[i]->d_name,targetword);
         if (strcmp(entry[i]->d_name, targetword) == 0 || rm_dot == 0)
         {
@@ -209,26 +209,31 @@ void search_directory(char *path, char *target, char *targetword, int only_dirs,
 
 void printrelativepath(char *path, char *ans)
 {
-    printf(".");
-    for (int i = strlen(path); i < strlen(ans); i++)
-    {
-        printf("%c", ans[i]);
-    }
-    printf("\n");
+    // printf(".");
+    // for (int i = strlen(path); i < strlen(ans); i++)
+    // {
+    //     printf("%c", ans[i]);
+    // }
+    
+    // printf("\n");
+    printf(".%s\n", ans + strlen(path));
 }
 
-int check(char *input, char *targetword)
+int check(char *input,int len, char *targetword)
 {
+    int i=0;
     char *temp = strdup(input);
-    for (int i = 0; i < strlen(temp); i++)
+    int comp;
+    while(i<strlen(temp))
     {
         if (temp[i] == '.')
         {
             temp[i] = '\0';
             break;
         }
+        i++;
     }
-    int comp = strcmp(temp, targetword);
+    comp = strcmp(temp, targetword);
     free(temp);
     return comp;
 }

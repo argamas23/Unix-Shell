@@ -19,10 +19,13 @@ char* piping(char* username, char* hostname, char* home_dir, char* command, char
 
     
     int tok = 0;
+    int original_input = dup(STDIN_FILENO);
     // printf("Here2 %s\n",command);
     char* pip_token = strtok(command, "|");
+    int original_output = dup(STDOUT_FILENO);
     while (pip_token != NULL) {
-        strcpy(pip_command[tok++], pip_token);
+        strcpy(pip_command[tok], pip_token);
+        tok++;
         pip_token = strtok(NULL, "|");
     }
 
@@ -30,8 +33,6 @@ char* piping(char* username, char* hostname, char* home_dir, char* command, char
     char* end = (char*)calloc(5, sizeof(char));
     strcpy(end, "\0");
 
-    int original_output = dup(STDOUT_FILENO);
-    int original_input = dup(STDIN_FILENO);
     int current[2], previous[2];
     // printf("%d\n", tok);
     // for(int i = 0; i<tok;i++)
