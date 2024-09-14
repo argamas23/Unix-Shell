@@ -1,0 +1,16 @@
+# Example aliases in .myshrc
+
+
+reveall = reveal -l .
+
+
+reveala = reveal -a .
+home = hop ~
+ 
+gs = git status  
+gco = git checkout  
+
+
+.. = hop ..  
+... = hop ../..  
+docs = hop ~/Documents  
