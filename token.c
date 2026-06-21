@@ -38,7 +38,6 @@ char * tokenize(char* username, char* hostname, char* home_dir, char* command, c
         if(strcmp(command_list[0], aliases[i].alias) == 0)
         {
             char* alias_command = find_alias(command_list[0]);
-            if (alias_command != NULL) {
                 strcpy(command_list[0], alias_command);
             }
             char* new_command = (char*)malloc(SIZE * sizeof(char));
